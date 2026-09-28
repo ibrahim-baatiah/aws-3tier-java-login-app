@@ -78,12 +78,15 @@
 			</plugin>
 		</plugins>
 	</build>
-<distributionManagement>
-    <repository>
-        <id>central</id>
-        <name>a0nymgefaiwwu-artifactory-primary-0-releases</name>
-        <url>https://edshopdpt8.jfrog.io/artifactory/libs-release-local</url>
-    </repository>
-</distributionManagement> 
+	<distributionManagement>
+	    <repository>
+	        <id>jfrog-artifactory</id>
+	        <url>http://16.171.10.246:8082/artifactory/libs-release-local</url>
+	    </repository>
+	    <snapshotRepository>
+	        <id>jfrog-artifactory</id>
+	        <url>http://16.171.10.246:8082/artifactory/libs-snapshot-local</url>
+	    </snapshotRepository>
+	</distributionManagement>
 
 </project>
