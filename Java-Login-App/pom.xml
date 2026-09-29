@@ -80,12 +80,12 @@
 	</build>
 	<distributionManagement>
 	    <repository>
-	        <id>jfrog-artifactory</id>
-	        <url>http://16.171.10.246:8082/artifactory/libs-release-local</url>
+	        <id>central</id>
+	        <url>https://awsinstance.ibrahimdev.cloud/artifactory/libs-release-local</url>
 	    </repository>
 	    <snapshotRepository>
-	        <id>jfrog-artifactory</id>
-	        <url>http://16.171.10.246:8082/artifactory/libs-snapshot-local</url>
+	        <id>snapshots</id>
+	        <url>https://awsinstance.ibrahimdev.cloud/artifactory/libs-snapshot-local</url>
 	    </snapshotRepository>
 	</distributionManagement>
 
