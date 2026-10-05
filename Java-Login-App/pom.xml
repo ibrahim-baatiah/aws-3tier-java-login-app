@@ -10,14 +10,14 @@
 	</parent>
 	<groupId>com.devopsrealtime</groupId>
 	<artifactId>dptweb</artifactId>
-	<version>1.0</version>
+	<version>1.1</version>
 	<packaging>war</packaging>
 	<name>dptweb</name>
 	<description>DPT DevOps project for Spring Boot</description>
 
 	<properties>
 		<java.version>11</java.version>
-	    <sonar.projectKey>919c2bc4ab5eced5d2cae01e243c8a71af2997a0</sonar.projectKey>
+	    <sonar.projectKey>ibrahim-baatiah_DevOps-Projects</sonar.projectKey>
 	    <sonar.organization>ibrahim-baatiah</sonar.organization>
 	    <sonar.host.url>https://sonarcloud.io</sonar.host.url>
 	</properties>
@@ -37,9 +37,9 @@
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/org.apache.tomcat/tomcat-jasper -->
 		<dependency>
-		    <groupId>org.apache.tomcat</groupId>
-		    <artifactId>tomcat-jasper</artifactId>
-		    <version>9.0.83</version>
+			<groupId>org.apache.tomcat.embed</groupId>
+			<artifactId>tomcat-embed-jasper</artifactId>
+			<scope>provided</scope>
 		</dependency>
 
 		<dependency>
@@ -75,6 +75,11 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.sonarsource.scanner.maven</groupId>
+				<artifactId>sonar-maven-plugin</artifactId>
+				<version>3.11.0.3922</version>
 			</plugin>
 		</plugins>
 	</build>

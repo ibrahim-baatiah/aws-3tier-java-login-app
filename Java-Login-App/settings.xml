@@ -4,12 +4,12 @@
   <servers>
     <server>
       <username>admin</username>
-      <password>***REMOVED***</password>
+      <password>${env.JFROG_TOKEN}</password>
       <id>central</id>
     </server>
     <server>
       <username>admin</username>
-      <password>***REMOVED***</password>
+      <password>${env.JFROG_TOKEN}</password>
       <id>snapshots</id>
     </server>
   </servers>
