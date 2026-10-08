@@ -1,0 +1,30 @@
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: #f4f6f8;
+  color: #1f2933;
+}
+table {
+  background: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  padding: 16px;
+}
+th {
+  font-size: 20px;
+  padding-bottom: 12px;
+}
+input[type="text"],
+input[type="password"],
+input[type="email"] {
+  padding: 6px;
+  border: 1px solid #c5ccd3;
+  border-radius: 4px;
+}
+input[type="submit"] {
+  background: #1a73e8;
+  color: #ffffff;
+  border: 0;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+}
