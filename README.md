@@ -12,7 +12,7 @@ A Java login/register web app deployed on AWS as a production-style **3-tier arc
 
 ### Request flow
 
-![Request flow](images/network-flow.png)
+![Request flow](images/requestflow.png)
 
 1. **Cloudflare DNS** points `app.ibrahimdev.cloud` to **CloudFront**.
 2. CloudFront serves `/static/*` from a private **S3** bucket (cached at the edge) and forwards everything else to the origin, adding a secret `X-Origin-Verify` header.
@@ -22,7 +22,7 @@ A Java login/register web app deployed on AWS as a production-style **3-tier arc
 
 ### AWS view
 
-![AWS architecture](images/aws-architecture.png)
+![AWS architecture](images/awsview.png)
 
 - **Two VPCs** connected by a **Transit Gateway**: `PrimaryVPC` (192.168.0.0/16) for the app, `Secondary VPC` (172.32.0.0/16) for the SSH jump server.
 - **Two Availability Zones**, each with a public and a private subnet.
