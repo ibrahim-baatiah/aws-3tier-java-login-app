@@ -3,6 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" href="/static/css/app.css">
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
 </head>
