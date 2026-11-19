@@ -5,6 +5,8 @@ A Java login/register web app deployed on AWS as a production-style **3-tier arc
 🔗 **Live:** [app.ibrahimdev.cloud](https://app.ibrahimdev.cloud)
 
 > Based on [NotHarshhaa/DevOps-Projects](https://github.com/NotHarshhaa/DevOps-Projects). The guide uses the AWS CLI; I built everything in the **AWS Console** to learn each service, and fixed several places where the guide didn't match the app code (see [below](#-where-i-diverged-from-the-guide)).
+>
+> Everything was provisioned manually in the AWS Console — there is no Infrastructure-as-Code in this repo.
 
 ---
 
