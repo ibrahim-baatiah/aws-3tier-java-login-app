@@ -2,9 +2,11 @@
 
 A Java login/register web app deployed on AWS as a production-style **3-tier architecture**: Nginx (web) → Tomcat (app) → MySQL on RDS, with Redis for shared sessions. It also has load balancers, auto scaling, HTTPS on a custom domain, CloudFront, a build pipeline (Maven → SonarCloud → JFrog), secrets kept in AWS Secrets Manager, and CloudWatch monitoring with email alerts.
 
-🔗 **Live:** [app.ibrahimdev.cloud](https://app.ibrahimdev.cloud)
+🔗 **Live:** ~~app.ibrahimdev.cloud~~ (removed to save cost)
 
 > Based on [NotHarshhaa/DevOps-Projects](https://github.com/NotHarshhaa/DevOps-Projects). The guide uses the AWS CLI; I built everything in the **AWS Console** to learn each service, and fixed several places where the guide didn't match the app code (see [below](#-where-i-diverged-from-the-guide)).
+>
+> Everything was provisioned manually in the AWS Console — there is no Infrastructure-as-Code in this repo.
 
 ---
 
@@ -64,7 +66,7 @@ export JFROG_TOKEN=$(aws secretsmanager get-secret-value --secret-id devops/jfro
 mvn -f pom.xml clean verify sonar:sonar deploy -s settings.xml -Dsonar.qualitygate.wait=true
 ```
 
-**Rolling out a new version:** update one server → create a new AMI → new launch template version (set as default) → **instance refresh** on the Auto Scaling group.
+**Rolling out a new version:** publish the new `.war` to JFrog → start an **instance refresh** on the Tomcat Auto Scaling group → each new instance pulls the latest `.war` from JFrog at boot. The AMI only holds the base setup (Tomcat, CloudWatch agent, startup scripts), so it doesn't need rebuilding for app releases.
 
 At startup, each Tomcat server fetches its DB credentials from Secrets Manager through a systemd `ExecStartPre` script, using the server's IAM role. No passwords live in Git, the `.war`, JFrog or the AMIs.
 
@@ -107,7 +109,7 @@ At startup, each Tomcat server fetches its DB credentials from Secrets Manager t
 - A subnet is "public" **only** because its route table points `0.0.0.0/0` to an Internet Gateway, and a server there still needs a public IP.
 - An NLB only routes to AZs it has a subnet in, and it can't redirect HTTP → HTTPS.
 - When TLS ends at the load balancer, the app sees `http://`. Nginx's `proxy_redirect` and `X-Forwarded-Proto` fix the redirects.
-- Servers in an Auto Scaling group are disposable. Every change goes into a new AMI, never just onto a running server.
+- Servers in an Auto Scaling group are disposable. The AMI holds the base setup, and the app is pulled from JFrog at boot, so a release is just a publish plus an instance refresh.
 - Testing layer by layer (Tomcat → internal NLB → Nginx → public URL) finds problems fast.
 
 ---
